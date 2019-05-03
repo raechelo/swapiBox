@@ -13,6 +13,7 @@
 }
 
 nav {
+  border-right: 2px solid $accent;
   z-index: 15;
 }
 
@@ -26,6 +27,7 @@ nav button {
   display: block;
   margin: 2rem auto;
   padding: 5px;
+  text-transform: uppercase;
   width: 80%;
   &:hover {
     background-color: $accent;
@@ -34,6 +36,17 @@ nav button {
   }
 }
 
-.movie-scroll {
-  color: $accent;
+.fave-count {
+  margin: 0 .5rem;
+  text-decoration: underline;
+}
+
+.active {
+  background-color: $accent;
+  color: black;
+  cursor: pointer;
+}
+
+.crawl-container {
+  padding: 1rem 2rem;
 }

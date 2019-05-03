@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Starfield should match the snapshot with all the data passed in 1`] = `
+<SizeMe(StarfieldAnimation)
+  style={
+    Object {
+      "height": "100%",
+      "position": "absolute",
+      "width": "100%",
+    }
+  }
+/>
+`;

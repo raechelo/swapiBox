@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match the snapshot with all the data passed in 1`] = `
+<div
+  className="App"
+>
+  <Starfield
+    className="Starfield"
+  />
+  <h1
+    className="header"
+  >
+    <img
+      alt="swapiboxi"
+      border="0"
+      src="https://fontmeme.com/permalink/190502/5dfed28f102f9d81a68ccee2d51fa26a.png"
+    />
+  </h1>
+  <nav>
+    <button
+      className="people"
+      onClick={[Function]}
+    >
+      people
+    </button>
+    <button
+      className="planets"
+      onClick={[Function]}
+    >
+      planets
+    </button>
+    <button
+      className="vehicles"
+      onClick={[Function]}
+    >
+      vehicles
+    </button>
+    <button
+      className="favorites"
+      onClick={[Function]}
+    >
+      favorites
+      <span
+        className="fave-count"
+      >
+        0
+      </span>
+    </button>
+  </nav>
+  <Loader />
+</div>
+`;
