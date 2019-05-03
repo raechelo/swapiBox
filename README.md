@@ -17,6 +17,7 @@ Is based off the Star Wars API and allows a user to navigate through many catego
  
 ## Screenshots
 Wireframe:
+
 [![Screen-Shot-2019-04-30-at-7-55-43-AM.png](https://i.postimg.cc/7L2v9BzL/Screen-Shot-2019-04-30-at-7-55-43-AM.png)](https://postimg.cc/zL8PXF0m)
 
 Final Product:
