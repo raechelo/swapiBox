@@ -1,30 +1,39 @@
 import React, { Component } from 'react';
+import Crawl from 'react-star-wars-crawl';
+import "react-star-wars-crawl/lib/index.css";
+import Loader from '../Loader/Loader';
 import People from '../People/People'
-import Card from '../Card/Card'
 
 class CardContainer extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-
-    }
+  constructor( props ) {
+    super( props );
   }
 
-  // console.log(props)
-  // return (
-    // <People />
-  // )
-  render () {
-    return <h1>hello</h1>
-  //  return this.props.people.map(p => {
-      // return (
-        // 'hello'
-    //     <Card
-            // name={p.name}
-            // homeworld={p.homeworld}
-    //     />
-    //   )
-    // })
+  render() {
+    switch(this.props.rendered.currentChoice) {
+      case 'people':
+      return (
+      <section className="Card-Container">
+        {this.props.rendered.people.map(p => {
+          return (
+              <People name={p.name} />
+              )
+            })
+          }
+      </section>
+      )
+      case 'planets':
+      break;
+      case 'vehicles':
+      break;
+      case 'crawl':
+        return (<Crawl 
+          text={this.props.rendered.movie.opening_crawl}
+          subtitle={this.props.rendered.movie.release_date}
+        />)
+      default:
+        return <Loader />
+    }
   }
 }
 

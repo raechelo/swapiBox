@@ -1,18 +1,19 @@
 import React from 'react';
-import People from './People';
 import { shallow } from 'enzyme';
+import Starfield from './Starfield';
 
-describe('People', () => {
-  
+describe('Starfield', () => {
+
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow (
-      <People />
+    wrapper = shallow(
+      <Starfield />
     )
-  })
+  });
 
   it('should match the snapshot with all the data passed in', () => {
-    expect(wrapper).toMatchSnapshot();
-  })
+    expect(wrapper).toMatchSnapshot()
+  });
+
 })

@@ -1,6 +1,12 @@
-.loader {
+.loader-img {
   animation: load 15s linear 0s infinite normal; 
   animation-fill-mode: forwards;
   margin: auto auto;
   width: 10%;
+}
+
+.loader-p {
+  font-size: 1.5rem;
+  letter-spacing: .5rem;
+  text-transform: uppercase;
 }
