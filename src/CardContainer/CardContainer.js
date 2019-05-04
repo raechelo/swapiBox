@@ -45,6 +45,22 @@ class CardContainer extends Component {
           </section>
         )
       case 'favorites':
+      if (this.props.rendered.favorites.length === 0) {
+        return (<h3 className="fave">Favorite Some Items!</h3>)
+      }
+      else {
+        return (
+          <section className="Card-Container">
+              { this.props.rendered.vehicles.map(v => {
+              return (
+                <Vehicle name={v.name} model={v.model} passengers={v.passengers} class={v.vehicle_class} />
+                )
+              } ) 
+              }
+            }
+          </section>
+        )
+      }
       break;
       case 'crawl':
         return (<Crawl 

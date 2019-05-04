@@ -103,11 +103,11 @@ class App extends Component {
       case 'planets':
         this.setState( { currentChoice: 'planets' } )
       break;
-      case 'favorites':
-        this.setState( { currentChoice: 'favorites' } )
+      case 'crawl':
+        this.setState( { currentChoice: 'crawl' } )
       break;
       default:
-        this.setState( { currentChoice: 'crawl' } )
+        this.setState( { currentChoice: 'favorites' } )
     }
   }
 
