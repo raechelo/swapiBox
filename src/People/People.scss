@@ -1,5 +1,26 @@
-.People {
+.Card {
   border: 2px solid $accent;
+  // background-color: hsla(51, 100%, 50%, 0.28);
+  // display: grid;
+  // grid-template-areas: "name"
+  // "info";
+  // grid-template-rows: 15% 85%;
   margin: 1.5rem;
+  padding: 5px;
   width: 25%;
+
+  h6 {
+    font-size: .8rem;
+    text-transform: capitalize;
+    // grid-area: info;
+  }
+
+  h4 {
+    font-weight: 700;
+    // grid-area: name;
+    letter-spacing: 3px;
+    text-decoration: underline;
+    text-transform: uppercase;
+  }
+
 }
