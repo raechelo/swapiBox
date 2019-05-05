@@ -4,15 +4,19 @@ exports[`People should match the snapshot with all the data passed in 1`] = `
 <article
   className="Card"
 >
-  <h4 />
+  <h4>
+    Wonder Woman
+  </h4>
   <h6>
     Species: 
   </h6>
   <h6>
     Homeworld: 
+    Themyscira
   </h6>
   <h6>
-    Population: 
+    Homeworld Population: 
+    86065
   </h6>
   <h6>
     <i

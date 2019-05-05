@@ -24,14 +24,14 @@ class App extends Component {
     return fetchCalls(peopleUrl)
       .then(data => this.setState( { people: data.results, isLoading: false, currentChoice: 'crawl' } ) )
       .then(() => this.fetchHomeworlds(this.state.people))
-      .catch(err => console.log(err));
+      .catch(err => { throw new Error(err) } );
   }
 
   fetchHomeworlds = (arr) => {
     let homeworlds = arr.map(p => {
       return fetchCalls(p.homeworld)
         .then(data => this.addHomeworldInfo(data.name, data.population) )
-        .catch(err => console.log(err))
+        .catch(err => { throw new Error(err) } )
     })
     this.fetchSpecies(this.state.people);
     return Promise.all(homeworlds)
@@ -42,7 +42,7 @@ class App extends Component {
       return p.residents.reduce((acc, r) => {
         fetchCalls(r)
         .then(data => acc.push( data.name ) )
-        .catch(err => console.log(err)) 
+        .catch(err => { throw new Error(err) } ) 
         return acc
       }, [] )
     })
@@ -70,7 +70,7 @@ class App extends Component {
     let species = arr.map(p => {
       return fetchCalls(p.species)
         .then(data => this.addSpeciesInfo(data.name ) )
-        .catch(err => console.log(err))
+        .catch(err => { throw new Error(err) } )
     })
     return Promise.all(species)
   }
@@ -127,8 +127,15 @@ class App extends Component {
     }
   }
 
+  favoriteItem = (item) => {
+    const { favorites } = this.state;
+    this.setState( { favorites: [...favorites, item] } );
+  }
 
-  //give button own component and do an isClicked state with ternary & inline styling to denote active state buttons
+  removeFavorites = (name) => {
+    const newFaves = this.state.favorites.filter(f => f.name !== name)
+    this.setState( { favorites: newFaves } )
+  }
 
   render() {
 
@@ -146,7 +153,7 @@ class App extends Component {
         {
           this.state.isLoading === true ? 
           <Loader /> : 
-          <CardContainer rendered={this.state} />
+          <CardContainer rendered={this.state} favoriteItem={this.favoriteItem} />
         }
       </div>
     );

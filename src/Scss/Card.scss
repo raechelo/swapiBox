@@ -1,27 +1,28 @@
 .Card {
   border: 2px solid $accent;
-  // display: grid;
-  // grid-template-areas: "name"
-  // "info";
-  // grid-template-rows: 15% 85%;
   margin: 1.5rem;
   padding: 5px;
   width: 25%;
+  z-index: 55;
 
   h6 {
     font-size: 1rem;
     text-transform: capitalize;
     margin: .5rem;
-    // grid-area: info;
   }
 
   h4 {
     font-size: 1.5rem;
     font-weight: 700;
-    // grid-area: name;
     letter-spacing: 3px;
     text-decoration: underline;
     text-transform: uppercase;
+  }
+
+  &:hover {
+    border: 2px solid cyan;
+    color: cyan;
+    transform: scale(1.1)
   }
 
 }

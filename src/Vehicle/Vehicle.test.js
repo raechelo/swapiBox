@@ -6,9 +6,14 @@ describe('Vehicle', () => {
 
   let wrapper;
 
+  let mockName = 'Nimbus';
+  let mockModel = '2000';
+  let mockPassengers = 1;
+  let mockVehicle_class = 'flying broom'
+
   beforeEach(() => {
     wrapper = shallow (
-      <Vehicle />
+      <Vehicle name={mockName} model={mockModel} passengers={mockPassengers} class={mockVehicle_class} />
     )
   });
 

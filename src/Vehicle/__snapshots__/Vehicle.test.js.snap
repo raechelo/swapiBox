@@ -4,15 +4,20 @@ exports[`Vehicle should match the snapshot with all the data passed in 1`] = `
 <div
   className="Card"
 >
-  <h4 />
+  <h4>
+    Nimbus
+  </h4>
   <h6>
     Model: 
+    2000
   </h6>
   <h6>
     Class: 
+    flying broom
   </h6>
   <h6>
     Passenger Count: 
+    1
   </h6>
   <h6>
     <i
