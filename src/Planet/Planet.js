@@ -7,7 +7,7 @@ const Planet = (props) => {
       <h6>Population: {props.population}</h6>
       <h6>Terrain: {props.terrain}</h6>
       <h6>Climate: {props.climate}</h6>
-      <h6>Residents: {props.residents}</h6>
+      <h6>Residents: {props.residents.map(r => ' -' + r)}</h6>
       <h6><i class="far fa-star"></i></h6>      
     </article>
   )

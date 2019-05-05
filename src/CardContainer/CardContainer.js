@@ -29,7 +29,7 @@ class CardContainer extends Component {
           <section className="Card-Container">
             {this.props.rendered.planets.map(p => {
               return (
-                <Planet name={p.name} terrain={p.terrain} residents={p.residents} climate={p.climate} />
+                <Planet name={p.name} population={p.population} terrain={p.terrain} residents={p.residents} climate={p.climate} />
               )
             })}
           </section>
@@ -61,7 +61,6 @@ class CardContainer extends Component {
           </section>
         )
       }
-      break;
       case 'crawl':
         return (<Crawl 
           text={this.props.rendered.movie.opening_crawl}
