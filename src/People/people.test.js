@@ -6,9 +6,14 @@ describe('People', () => {
   
   let wrapper;
 
+  let mockName = 'Wonder Woman';
+  let mockSpecies = 'Amazon';
+  let mockHomeworld = 'Themyscira';
+  let mockHomeworldPopulation = 86065;
+
   beforeEach(() => {
     wrapper = shallow (
-      <People />
+      <People name={mockName} sfecies={mockSpecies} homeworld={mockHomeworld} homeworldPop={mockHomeworldPopulation} />
     )
   })
 

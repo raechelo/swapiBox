@@ -29,7 +29,7 @@ class CardContainer extends Component {
           <section className="Card-Container">
             {this.props.rendered.planets.map(p => {
               return (
-                <Planet name={p.name} terrain={p.terrain} residents={p.residents} climate={p.climate} />
+                <Planet name={p.name} population={p.population} terrain={p.terrain} residents={p.residents} climate={p.climate} />
               )
             })}
           </section>
@@ -45,7 +45,34 @@ class CardContainer extends Component {
           </section>
         )
       case 'favorites':
-      break;
+      if (this.props.rendered.favorites.length === 0) {
+        return (<h3 className="fave">Favorite Some Items!</h3>)
+      }
+       else {
+       return ( <section className="Card-Container">
+              { this.props.rendered.favorites.map(f => {
+              if (f.climate) {
+                return (
+                  <Planet name={f.name} population={f.population} terrain={f.terrain} residents={f.residents} climate={f.climate} />
+                )
+              }
+                else if (f.model) {
+                  return(
+                    <Vehicle name={f.name} model={f.model} passengers={f.passengers} class={f.vehicle_class} />
+                  )
+                }
+                else if (f.species) {
+                  return(
+                    <People name={f.name} sfecies={f.species} homeworld={f.homeworld} homeworldPop={f.homeworldPopulation} />
+                  )
+                }
+              } ) 
+              }
+            }
+          </section>
+        )
+       }
+
       case 'crawl':
         return (<Crawl 
           text={this.props.rendered.movie.opening_crawl}

@@ -6,6 +6,9 @@ describe('App', () => {
 
 
   let wrapper;
+  let mockFetchPlanets = jest.fn();
+  let mockFetchPeople = jest.fn();
+  let mockFetchVehicles = jest.fn();
 
   let peopleArr = [
         {
@@ -85,6 +88,10 @@ describe('App', () => {
     const wrapper = shallow(<App />);
 
     expect(window.fetch).toHaveBeenCalledWith(expected);
+
+    // expect(mockFetchPeople).toHaveBeenCalledTimes(1);
+    // expect(mockFetchVehicles).toHaveBeenCalledTimes(1);
+    // expect(mockFetchPlanets).toHaveBeenCalledTimes(1);
   });
 
   it('should pull in the data with the correct people url', () => {
@@ -94,6 +101,7 @@ describe('App', () => {
 
     expect(window.fetch).toHaveBeenCalledWith(expected);
     expect(window.fetch).toHaveBeenCalledTimes(1);
+    expect(wrapper.state()).toEqual( { isLoading: false, people: [] } )
   });
 
   it('should pull in the data with the correct homeworld name and population', () => {
@@ -111,6 +119,18 @@ describe('App', () => {
     wrapper.instance().fetchSpecies(peopleArr);
     expect(window.fetch).toHaveBeenCalledWith(expected);
   });
+
+  it('should pull in all correct data for the vehicles', () => {
+    expect(wrapper.state('vehicles')).toEqual([]);
+
+    wrapper.instance().fetchVehicles();
+
+    expect(wrapper.state('vehicles')).toEqual(10);
+  })
+
+  it('should pull in the planet data, including residents', () => {
+
+  })
 
   it('should return an error if fetch does not return', () => {
     window.fetch = jest.fn().mockImplementation(() => {

@@ -1,21 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Planet should match the snapshot in absence of data 1`] = `
+<article
+  className="Card"
+>
+  <h4>
+    Mordor
+  </h4>
+  <h6>
+    Population: 
+    299999
+  </h6>
+  <h6>
+    Terrain: 
+    rocky
+  </h6>
+  <h6>
+    Climate: 
+    burning hot
+  </h6>
+  <h6>
+    Residents: 
+     -Sauron
+  </h6>
+  <h6>
+    <i
+      class="far fa-star"
+    />
+  </h6>
+</article>
+`;
+
 exports[`Planet should match the snapshot with all the data passed in 1`] = `
 <article
   className="Card"
 >
-  <h4 />
+  <h4>
+    Mordor
+  </h4>
   <h6>
     Population: 
+    299999
   </h6>
   <h6>
     Terrain: 
+    rocky
   </h6>
   <h6>
     Climate: 
+    burning hot
   </h6>
   <h6>
     Residents: 
+     -Sauron
   </h6>
   <h6>
     <i

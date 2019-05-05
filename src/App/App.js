@@ -3,6 +3,7 @@ import Loader from '../Loader/Loader'
 import CardContainer from '../CardContainer/CardContainer';
 import Starfield from '../Starfield/Starfield'
 import propTypes from 'prop-types';
+import { fetchCalls } from '../apiCalls';
 
 class App extends Component {
   constructor() {
@@ -20,26 +21,45 @@ class App extends Component {
 
   fetchPeople = () => {
     const peopleUrl = 'https://swapi.co/api/people/';
-    fetch(peopleUrl)
-      .then(response => response.json())
+    return fetchCalls(peopleUrl)
       .then(data => this.setState( { people: data.results, isLoading: false, currentChoice: 'crawl' } ) )
       .then(() => this.fetchHomeworlds(this.state.people))
-      .catch(err => console.log(err));
+      .catch(err => { throw new Error(err) } );
   }
 
   fetchHomeworlds = (arr) => {
     let homeworlds = arr.map(p => {
-      fetch(p.homeworld)
-        .then(response => response.json())
+      return fetchCalls(p.homeworld)
         .then(data => this.addHomeworldInfo(data.name, data.population) )
-        .catch(err => console.log(err))
+        .catch(err => { throw new Error(err) } )
     })
     this.fetchSpecies(this.state.people);
     return Promise.all(homeworlds)
   }
 
+  fetchResidents = (arr) => {
+    let residents = arr.map(p => {
+      return p.residents.reduce((acc, r) => {
+        fetchCalls(r)
+        .then(data => acc.push( data.name ) )
+        .catch(err => { throw new Error(err) } ) 
+        return acc
+      }, [] )
+    })
+    console.log(residents);
+    this.addPlanetInfo(residents);
+    return Promise.all(residents);
+  }
+
+  addPlanetInfo = (arr) => {
+    let planets = this.state.planets.map((p, i) => {
+        return Object.assign(p, { residents: arr[i] } )
+    })
+    this.setState( { planets } )
+  }
+
   addHomeworldInfo = (name, pop) => {
-    const addInfo = {homeworld:name, homeworldPopulation: pop}
+    const addInfo = { homeworld:name, homeworldPopulation: pop }
     const people = this.state.people.map(p => {
       return Object.assign(p, addInfo)
     })
@@ -48,10 +68,9 @@ class App extends Component {
 
   fetchSpecies = (arr) => {
     let species = arr.map(p => {
-      fetch(p.species)
-        .then(response => response.json())
-        .then(data => this.addSpeciesInfo(data.name))
-        .catch(err => console.log(err))
+      return fetchCalls(p.species)
+        .then(data => this.addSpeciesInfo(data.name ) )
+        .catch(err => { throw new Error(err) } )
     })
     return Promise.all(species)
   }
@@ -64,32 +83,29 @@ class App extends Component {
     this.setState( {people } );
   }
 
-  componentDidMount() {
-    const movieUrl = 'https://swapi.co/api/films/';
-    fetch(movieUrl)
-      .then(response => response.json())
-      .then(data => data.results.sort(() => 0.5 - Math.random()).pop()  )
-      .then(movie => this.setState( { movie } ) )
-    this.fetchPeople();
-    this.fetchVehicles();
-    this.fetchPlanets();
+  fetchPlanets = () => {
+    const planetUrl = 'https://swapi.co/api/planets/';
+    return fetchCalls(planetUrl)
+      .then(data => this.setState( { planets: data.results } ) )
+      .then(() => this.fetchResidents(this.state.planets) )
+      .catch(err => { throw new Error(err) } )
   }
 
   fetchVehicles = () => {
     const vehicleUrl = 'https://swapi.co/api/vehicles/';
-    fetch(vehicleUrl)
-      .then(response => response.json())
+    return fetchCalls(vehicleUrl)
       .then(data => this.setState( {vehicles: data.results} ) )
-      .catch(err => console.log(err))
+      .catch(err => { throw new Error(err) } )
   }
 
-  fetchPlanets = () => {
-    const planetUrl = 'https://swapi.co/api/planets/';
-
-    fetch(planetUrl)
-      .then(response => response.json())
-      .then(data => this.setState( { planets: data.results } ) )
-      .catch(err => console.log(err))
+  componentDidMount() {
+    const movieUrl = 'https://swapi.co/api/films/';
+    return fetchCalls(movieUrl)
+      .then(data => data.results.sort(() => 0.5 - Math.random()).pop()  )
+      .then(movie => this.setState( { movie } ) )
+      .then(() =>  this.fetchPeople())
+      .then(() => this.fetchVehicles())
+      .then(() => this.fetchPlanets())
   }
 
   handleClick = (e) => {
@@ -103,16 +119,23 @@ class App extends Component {
       case 'planets':
         this.setState( { currentChoice: 'planets' } )
       break;
-      case 'favorites':
-        this.setState( { currentChoice: 'favorites' } )
+      case 'crawl':
+        this.setState( { currentChoice: 'crawl' } )
       break;
       default:
-        this.setState( { currentChoice: 'crawl' } )
+        this.setState( { currentChoice: 'favorites' } )
     }
   }
 
+  favoriteItem = (item) => {
+    const { favorites } = this.state;
+    this.setState( { favorites: [...favorites, item] } );
+  }
 
-  //give button own component and do an isClicked state with ternary & inline styling to denote active state buttons
+  removeFavorites = (name) => {
+    const newFaves = this.state.favorites.filter(f => f.name !== name)
+    this.setState( { favorites: newFaves } )
+  }
 
   render() {
 
@@ -130,7 +153,7 @@ class App extends Component {
         {
           this.state.isLoading === true ? 
           <Loader /> : 
-          <CardContainer rendered={this.state} />
+          <CardContainer rendered={this.state} favoriteItem={this.favoriteItem} />
         }
       </div>
     );
