@@ -14,6 +14,7 @@ Is based off the Star Wars API and allows a user to navigate through many catego
  - React
  - Jest/Enzyme
  - SCSS
+ - NPM
  
 ## Screenshots
 Wireframe:
@@ -21,6 +22,8 @@ Wireframe:
 [![Screen-Shot-2019-04-30-at-7-55-43-AM.png](https://i.postimg.cc/7L2v9BzL/Screen-Shot-2019-04-30-at-7-55-43-AM.png)](https://postimg.cc/zL8PXF0m)
 
 Final Product:
+
+[![2019-05-05-20-47-15.gif](https://i.postimg.cc/gjSFpkBT/2019-05-05-20-47-15.gif)](https://postimg.cc/2LZXFmYQ)
  
 ## Learning Goals
 The main intention of this project was for the developer to solidify their knowledge of fetching API data as well as nesting the fetch calls. The developer was to learn how to test the fetch calls effectively in case of a positive or negative repsonse from the call. Finally, the project was given to strengthen the developer's skills with React, setting up components, passing props, and destructuring.
