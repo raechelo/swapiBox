@@ -19,85 +19,6 @@ class App extends Component {
     }
   }
 
-  fetchPeople = () => {
-    const peopleUrl = 'https://swapi.co/api/people/';
-    return fetchCalls(peopleUrl)
-      .then(data => this.setState( { people: data.results, isLoading: false, currentChoice: 'crawl' } ) )
-      .then(() => this.fetchHomeworlds(this.state.people))
-      .catch(err => { throw new Error(err) } );
-  }
-
-  fetchHomeworlds = (arr) => {
-    let homeworlds = arr.map(p => {
-      return fetchCalls(p.homeworld)
-        .then(data => this.addHomeworldInfo(data.name, data.population) )
-        .catch(err => { throw new Error(err) } )
-    })
-    this.fetchSpecies(this.state.people);
-    return Promise.all(homeworlds)
-  }
-
-  fetchResidents = (arr) => {
-    let residents = arr.map(p => {
-      return p.residents.reduce((acc, r) => {
-        fetchCalls(r)
-        .then(data => acc.push( data.name ) )
-        .catch(err => { throw new Error(err) } ) 
-        return acc
-      }, [] )
-    })
-    console.log(residents);
-    this.addPlanetInfo(residents);
-    return Promise.all(residents);
-  }
-
-  addPlanetInfo = (arr) => {
-    let planets = this.state.planets.map((p, i) => {
-        return Object.assign(p, { residents: arr[i] } )
-    })
-    this.setState( { planets } )
-  }
-
-  addHomeworldInfo = (name, pop) => {
-    const addInfo = { homeworld:name, homeworldPopulation: pop }
-    const people = this.state.people.map(p => {
-      return Object.assign(p, addInfo)
-    })
-    this.setState( { people } )
-  }
-
-  fetchSpecies = (arr) => {
-    let species = arr.map(p => {
-      return fetchCalls(p.species)
-        .then(data => this.addSpeciesInfo(data.name ) )
-        .catch(err => { throw new Error(err) } )
-    })
-    return Promise.all(species)
-  }
-
-  addSpeciesInfo = (species) => {
-    const addSpecies = {species:species}
-    const people = this.state.people.map(p => {
-      return Object.assign(p, addSpecies)
-    })
-    this.setState( {people } );
-  }
-
-  fetchPlanets = () => {
-    const planetUrl = 'https://swapi.co/api/planets/';
-    return fetchCalls(planetUrl)
-      .then(data => this.setState( { planets: data.results } ) )
-      .then(() => this.fetchResidents(this.state.planets) )
-      .catch(err => { throw new Error(err) } )
-  }
-
-  fetchVehicles = () => {
-    const vehicleUrl = 'https://swapi.co/api/vehicles/';
-    return fetchCalls(vehicleUrl)
-      .then(data => this.setState( {vehicles: data.results} ) )
-      .catch(err => { throw new Error(err) } )
-  }
-
   componentDidMount() {
     const movieUrl = 'https://swapi.co/api/films/';
     return fetchCalls(movieUrl)
@@ -125,6 +46,84 @@ class App extends Component {
       default:
         this.setState( { currentChoice: 'favorites' } )
     }
+  }
+
+  fetchPeople = () => {
+    const peopleUrl = 'https://swapi.co/api/people/';
+    return fetchCalls(peopleUrl)
+      .then(data => this.setState( { people: data.results, isLoading: false, currentChoice: 'crawl' } ) )
+      .then(() => this.fetchHomeworlds(this.state.people))
+      .catch(err => { throw new Error(err) } );
+  }
+
+  fetchHomeworlds = (arr) => {
+    let homeworlds = arr.map(p => {
+      return fetchCalls(p.homeworld)
+        .then(data => this.addHomeworldInfo(data.name, data.population) )
+        .catch(err => { throw new Error(err) } )
+    })
+    this.fetchSpecies(this.state.people);
+    return Promise.all(homeworlds)
+  }
+
+  addHomeworldInfo = (name, pop) => {
+    const addInfo = { homeworld:name, homeworldPopulation: pop }
+    const people = this.state.people.map(p => {
+      return Object.assign(p, addInfo)
+    })
+    this.setState( { people } )
+  }
+
+  fetchSpecies = (arr) => {
+    let species = arr.map(p => {
+      return fetchCalls(p.species)
+        .then(data => this.addSpeciesInfo(data.name ) )
+        .catch(err => { throw new Error(err) } )
+    })
+    return Promise.all(species)
+  }
+
+  addSpeciesInfo = (species) => {
+    const addSpecies = {species:species}
+    const people = this.state.people.map(p => {
+      return Object.assign(p, addSpecies)
+    })
+    this.setState( {people } );
+  }
+
+  fetchVehicles = () => {
+    const vehicleUrl = 'https://swapi.co/api/vehicles/';
+    return fetchCalls(vehicleUrl)
+      .then(data => this.setState( {vehicles: data.results} ) )
+      .catch(err => { throw new Error(err) } )
+  }
+
+  addPlanetInfo = (arr) => {
+    let planets = this.state.planets.map((p, i) => {
+        return Object.assign(p, { residents: arr[i] } )
+    })
+    this.setState( { planets } )
+  }
+
+  fetchResidents = (arr) => {
+    let residents = arr.map(p => {
+      return p.residents.reduce((acc, r) => {
+        fetchCalls(r)
+        .then(data => acc.push( data.name ) )
+        .catch(err => { throw new Error(err) } ) 
+        return acc
+      }, [] )
+    })
+    this.addPlanetInfo(residents);
+    return Promise.all(residents);
+  }
+
+  fetchPlanets = () => {
+    const planetUrl = 'https://swapi.co/api/planets/';
+    return fetchCalls(planetUrl)
+      .then(data => this.setState( { planets: data.results } ) )
+      .then(() => this.fetchResidents(this.state.planets) )
+      .catch(err => { throw new Error(err) } )
   }
 
   favoriteItem = (item) => {
