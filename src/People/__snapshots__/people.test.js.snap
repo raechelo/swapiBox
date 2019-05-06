@@ -21,6 +21,7 @@ exports[`People should match the snapshot with all the data passed in 1`] = `
   <h6>
     <i
       class="far fa-star"
+      onClick={[Function]}
     />
   </h6>
 </article>
