@@ -127,8 +127,12 @@ class App extends Component {
   }
 
   favoriteItem = (item) => {
-    const { favorites } = this.state;
-    this.setState( { favorites: [...favorites, item] } );
+    if (!this.state.favorites.includes(item)) {
+      const { favorites } = this.state;
+      this.setState( { favorites: [...favorites, item] } );
+    } else {
+      this.removeFavorites(item.name)
+    }
   }
 
   removeFavorites = (name) => {

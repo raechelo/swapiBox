@@ -7,7 +7,7 @@ const Vehicle = (props) => {
       <h6>Model: {props.model}</h6>
       <h6>Class: {props.class}</h6>
       <h6>Passenger Count: {props.passengers}</h6>
-      <h6><i class="far fa-star"></i></h6>
+      <h6><i onClick={() => props.favoriteItem( props.v ) } class="far fa-star"></i></h6>
     </div>
   )
 }

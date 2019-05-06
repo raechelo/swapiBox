@@ -4,7 +4,7 @@ import "react-star-wars-crawl/lib/index.css";
 import Loader from '../Loader/Loader';
 import People from '../People/People';
 import Vehicle from '../Vehicle/Vehicle';
-import Planet from '../Planet/Planet'
+import Planet from '../Planet/Planet';
 
 class CardContainer extends Component {
   constructor( props ) {
@@ -18,7 +18,7 @@ class CardContainer extends Component {
         <section className="Card-Container">
           {this.props.rendered.people.map(p => {
             return (
-                <People name={p.name} species={p.species} homeworld={p.homeworld} homeworldPop={p.homeworldPopulation} />
+                <People p={p} favoriteItem={this.props.favoriteItem} name={p.name} species={p.species} homeworld={p.homeworld} homeworldPop={p.homeworldPopulation} />
                 )
               })
             }
@@ -29,7 +29,7 @@ class CardContainer extends Component {
           <section className="Card-Container">
             {this.props.rendered.planets.map(p => {
               return (
-                <Planet name={p.name} population={p.population} terrain={p.terrain} residents={p.residents} climate={p.climate} />
+                <Planet p={p} favoriteItem={this.props.favoriteItem} name={p.name} population={p.population} terrain={p.terrain} residents={p.residents} climate={p.climate} />
               )
             })}
           </section>
@@ -39,7 +39,7 @@ class CardContainer extends Component {
           <section className="Card-Container">
             {this.props.rendered.vehicles.map(v => {
               return (
-                <Vehicle name={v.name} model={v.model} passengers={v.passengers} class={v.vehicle_class} />
+                <Vehicle v={v} favoriteItem={this.props.favoriteItem} name={v.name} model={v.model} passengers={v.passengers} class={v.vehicle_class} />
               )
             })}
           </section>
@@ -68,11 +68,9 @@ class CardContainer extends Component {
                 }
               } ) 
               }
-            }
           </section>
         )
        }
-
       case 'crawl':
         return (<Crawl 
           text={this.props.rendered.movie.opening_crawl}
