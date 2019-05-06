@@ -74,8 +74,9 @@ class CardContainer extends Component {
        }
       case 'crawl':
         return (<Crawl 
+          subTitle={this.props.rendered.movie.title}
+          title={this.props.rendered.movie.release_date}
           text={this.props.rendered.movie.opening_crawl}
-          subtitle={this.props.rendered.movie.release_date}
         />)
       default:
         return <Loader />
