@@ -8,8 +8,7 @@ describe('fetchCalls', () => {
   beforeEach(() => {
     mockMovie = {name:'Episode 4'};
     mockUrl = ['https://swapi.co/api/films/', {
-      method: 'GET',
-      // body: JSON.stringify( { mockMovie } )
+      method: 'GET'
     }]
 
     window.fetch = jest.fn().mockImplementation(() => {
