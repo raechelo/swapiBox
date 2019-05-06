@@ -23,7 +23,7 @@ Wireframe:
 
 Final Product:
 
-[https://giphy.com/gifs/ZBWidaWk7F1kovKVNw/html5]
+![https://giphy.com/gifs/ZBWidaWk7F1kovKVNw/html5]
  
 ## Learning Goals
 The main intention of this project was for the developer to solidify their knowledge of fetching API data as well as nesting the fetch calls. The developer was to learn how to test the fetch calls effectively in case of a positive or negative repsonse from the call. Finally, the project was given to strengthen the developer's skills with React, setting up components, passing props, and destructuring.
