@@ -7,7 +7,7 @@ describe('Planet', () => {
   let wrapper;
 
   let mockName = 'Mordor';
-  let mockPopulation = 299999;
+  let mockPopulation = '299999';
   let mockTerrain = 'rocky';
   let mockResidents = ['Sauron'];
   let mockClimate = 'burning hot';

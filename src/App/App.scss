@@ -29,7 +29,7 @@ nav button {
   padding: 5px;
   text-transform: uppercase;
   width: 80%;
-  &:hover {
+  &:hover, &:focus {
     background-color: $accent;
     color: black;
     cursor: pointer;

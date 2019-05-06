@@ -1,5 +1,6 @@
 import React from 'react';
-import img from '../assets/SithEmblem.png'
+import img from '../assets/SithEmblem.png';
+import propTypes from 'prop-types';
 
 function Loader() {
   return (

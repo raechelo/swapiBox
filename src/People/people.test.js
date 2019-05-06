@@ -9,7 +9,7 @@ describe('People', () => {
   let mockName = 'Wonder Woman';
   let mockSpecies = 'Amazon';
   let mockHomeworld = 'Themyscira';
-  let mockHomeworldPopulation = 86065;
+  let mockHomeworldPopulation = '86065';
 
   beforeEach(() => {
     wrapper = shallow (
