@@ -5,6 +5,7 @@ import Loader from '../Loader/Loader';
 import People from '../People/People';
 import Vehicle from '../Vehicle/Vehicle';
 import Planet from '../Planet/Planet';
+import propTypes from 'prop-types';
 
 class CardContainer extends Component {
   constructor( props ) {
@@ -80,6 +81,11 @@ class CardContainer extends Component {
         return <Loader />
     }
   }
+}
+
+CardContainer.propTypes = {
+  rendered: propTypes.object,
+  favoriteItem: propTypes.func
 }
 
 export default CardContainer;

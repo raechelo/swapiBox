@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 const Planet = (props) => {
   return (
@@ -11,6 +12,16 @@ const Planet = (props) => {
       <h6><i onClick={() => props.favoriteItem( props.p ) } class="far fa-star"></i></h6>      
     </article>
   )
+}
+
+Planet.propTypes = {
+  p: propTypes.object,
+  favoriteItem: propTypes.func,
+  name: propTypes.string,
+  population: propTypes.string,
+  terrain: propTypes.string,
+  residents: propTypes.array,
+  climate: propTypes.string
 }
 
 export default Planet;

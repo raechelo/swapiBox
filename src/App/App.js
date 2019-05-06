@@ -165,10 +165,10 @@ class App extends Component {
 
 
 
-App.protoTypes = {
+App.propTypes = {
   people: propTypes.array,
   isLoading: propTypes.bool,
-  movie: propTypes.objct,
+  movie: propTypes.object,
   planets: propTypes.array,
   vehicles: propTypes.array,
   favorites: propTypes.array,

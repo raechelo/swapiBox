@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 const People = (props) => {
   return (
@@ -10,6 +11,15 @@ const People = (props) => {
       <h6><i onClick={() => props.favoriteItem( props.p ) } class="far fa-star"></i></h6>
     </article>
   )
+}
+
+People.propTypes = {
+  p: propTypes.object,
+  favoriteItem: propTypes.func,
+  name: propTypes.string,
+  species: propTypes.string,
+  homeworld: propTypes.string,
+  homeworldPop: propTypes.string
 }
 
 export default People;
