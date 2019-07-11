@@ -2,7 +2,7 @@
 
 Is based off the Star Wars API and allows a user to navigate through many categories of the lore including: people, vehicles, and planets. The project is given to the developer to assist in their learning of fetch calls, nested fetch calls, as well as testing fetch calls.
 
-## Installalation / Setup
+## Installation / Setup
  If you'd like to install and use SwapiBoxi, please follow these instructions:
  - clone the repo down
  - in your terminal run npm install
