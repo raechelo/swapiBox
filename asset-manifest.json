@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/swapibox/static/css/main.1809972b.chunk.css",
-    "main.js": "/swapibox/static/js/main.6096c42f.chunk.js",
-    "main.js.map": "/swapibox/static/js/main.6096c42f.chunk.js.map",
-    "runtime~main.js": "/swapibox/static/js/runtime~main.df4fd0ab.js",
-    "runtime~main.js.map": "/swapibox/static/js/runtime~main.df4fd0ab.js.map",
-    "static/css/2.d1f26340.chunk.css": "/swapibox/static/css/2.d1f26340.chunk.css",
-    "static/js/2.68bc95e4.chunk.js": "/swapibox/static/js/2.68bc95e4.chunk.js",
-    "static/js/2.68bc95e4.chunk.js.map": "/swapibox/static/js/2.68bc95e4.chunk.js.map",
-    "index.html": "/swapibox/index.html",
-    "precache-manifest.512f449c6f81fb1ced7fe091835be866.js": "/swapibox/precache-manifest.512f449c6f81fb1ced7fe091835be866.js",
-    "service-worker.js": "/swapibox/service-worker.js",
-    "static/css/2.d1f26340.chunk.css.map": "/swapibox/static/css/2.d1f26340.chunk.css.map",
-    "static/css/main.1809972b.chunk.css.map": "/swapibox/static/css/main.1809972b.chunk.css.map",
-    "static/media/SithEmblem.png": "/swapibox/static/media/SithEmblem.b68da5e8.png"
+    "main.css": "/swapiBox/static/css/main.1809972b.chunk.css",
+    "main.js": "/swapiBox/static/js/main.6096c42f.chunk.js",
+    "main.js.map": "/swapiBox/static/js/main.6096c42f.chunk.js.map",
+    "runtime~main.js": "/swapiBox/static/js/runtime~main.33bac6c8.js",
+    "runtime~main.js.map": "/swapiBox/static/js/runtime~main.33bac6c8.js.map",
+    "static/css/2.d1f26340.chunk.css": "/swapiBox/static/css/2.d1f26340.chunk.css",
+    "static/js/2.68bc95e4.chunk.js": "/swapiBox/static/js/2.68bc95e4.chunk.js",
+    "static/js/2.68bc95e4.chunk.js.map": "/swapiBox/static/js/2.68bc95e4.chunk.js.map",
+    "index.html": "/swapiBox/index.html",
+    "precache-manifest.9205465b3b2b2f95a13b55de4d24018f.js": "/swapiBox/precache-manifest.9205465b3b2b2f95a13b55de4d24018f.js",
+    "service-worker.js": "/swapiBox/service-worker.js",
+    "static/css/2.d1f26340.chunk.css.map": "/swapiBox/static/css/2.d1f26340.chunk.css.map",
+    "static/css/main.1809972b.chunk.css.map": "/swapiBox/static/css/main.1809972b.chunk.css.map",
+    "static/media/SithEmblem.png": "/swapiBox/static/media/SithEmblem.b68da5e8.png"
   }
 }
