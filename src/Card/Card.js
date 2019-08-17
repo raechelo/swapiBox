@@ -16,12 +16,16 @@ export default function Card(props) {
         </div>
       }
       {
-        props.model &&
+        props.vehicle_class &&
         <div>
           <h4>{props.name}</h4>
           <h6>Model: {props.model}</h6>
-          <h6>Class: {props.class}</h6>
-          <h6>Passenger Count: {props.passengers}</h6>
+          <h6>Class: {props.vehicle_class}</h6>
+          <h6>Manufacturer: {props.manufacturer}</h6>
+          <h6>Class: {props.vehicle_class}</h6>
+          <h6>Cost: {props.cost}</h6>
+          <h6>Crew Count: {props.crew}</h6>
+          <h6>Passenger Count: {props.passengerCount}</h6>
         </div>
       }
       {
@@ -35,16 +39,17 @@ export default function Card(props) {
         </div>
       }
       {
-        props.manufacturer &&
+        props.starship_class &&
         <div>
           <h4>Name: {props.name}</h4>
           <h6>Model: {props.model}</h6>
           <h6>Manufacturer: {props.manufacturer}</h6>
-          <h6>Class: {props.props_class}</h6>
-          <h6>Crew count: {props.crew}</h6>
-          <h6>Passenger count: {props.passengers}</h6>
+          <h6>Class: {props.starship_class}</h6>
           <h6>Hyperdrive rating: {props.hyperdrive_rating}</h6>
           <h6>{props.MGLT} Megalight per hour</h6>
+          <h6>Cost: {props.cost}</h6>
+          <h6>Crew count: {props.crew}</h6>
+          <h6>Passenger count: {props.passengerCount}</h6>
         </div>
       }
       {

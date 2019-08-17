@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Card from '../Card/Card';
 import propTypes from 'prop-types';
 import { fetchCalls } from '../apiCalls';
 
@@ -56,17 +57,7 @@ class People extends Component {
 
   render() {
     const displayPeople = this.state.people.map(person => (
-      <article className="Card">
-      <h4>{person.name}</h4>
-      <h6>Species: {person.species}</h6>
-      <h6>Homeworld: {person.homeworld}</h6>
-      <h6>Homeworld Population: {person.homeworldPopulation}</h6>
-      <h6>Hair Color: {person.hair_color}</h6>
-      <h6>eye Color: {person.eye_color}</h6>
-      <h6>skin Color: {person.skin_color}</h6>
-      <h6>Birth year: {person.birth_year}</h6>
-      <h6><i onClick={() => this.props.favoriteItem( person ) } class="far fa-star"></i></h6>
-    </article>
+      <Card name={person.name} species={person.species} homeworld={person.homeworld} homeworldPopulation={person.homeworldPopulation} hair_color={person.hair_color} eye_color={person.eye_color} skin_color={person.skin_color} birth_year={person.birth_year} />
     ))
 
     return (

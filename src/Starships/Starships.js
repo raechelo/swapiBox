@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Card from '../Card/Card';
 import { fetchCalls } from '../apiCalls';
 
 
@@ -20,17 +21,13 @@ export default class Starships extends Component {
 
   render() {
     const displayStarships = this.state.starships.map(starship => (
-      <article className="Card">
-        <h4>Name: {starship.name}</h4>
-        <h6>Model: {starship.model}</h6>
-        <h6>Manufacturer: {starship.manufacturer}</h6>
-        <h6>Class: {starship.starship_class}</h6>
-        <h6>Crew count: {starship.crew}</h6>
-        <h6>Passenger count: {starship.passengers}</h6>
-        <h6>Hyperdrive rating: {starship.hyperdrive_rating}</h6>
-        <h6>{starship.MGLT} Megalight per hour</h6>
-        <h6><i onClick={() => this.props.favoriteItem( starship ) } class="far fa-star"></i></h6>
-      </article>
+      <Card name={starship.name} 
+      model={starship.model} 
+      manufacturer={starship.manufacturer} 
+      starship_class={starship.starship_class} 
+      passengerCount={starship.passengers} 
+      hyperdrive_rating={starship.hyperdrive_rating}
+      MGLT={starship.MGLT}  />
     ))
 
     return (

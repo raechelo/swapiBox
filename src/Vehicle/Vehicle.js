@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Card from '../Card/Card';
 import propTypes from 'prop-types';
 import { fetchCalls } from '../apiCalls';
 
@@ -21,13 +22,12 @@ class Vehicle extends Component {
 
   render() {
     const displayVehicles = this.state.vehicles.map(vehicle => (
-      <article className="Card">
-        <h4>{vehicle.name}</h4>
-        <h6>Model: {vehicle.model}</h6>
-        <h6>Class: {vehicle.class}</h6>
-        <h6>Passenger Count: {vehicle.passengers}</h6>
-        <h6><i onClick={() => this.props.favoriteItem( vehicle ) } class="far fa-star"></i></h6>
-      </article>
+      <Card name={vehicle.name} 
+      model={vehicle.model} 
+      vehicle_class={vehicle.vehicle_class} 
+      passengerCount={vehicle.passengers} 
+      crew={vehicle.crew} 
+      cost={vehicle.cost_in_credits} />
     ))
 
     return (
