@@ -87,7 +87,7 @@ class App extends Component {
         {
           this.state.isLoading === true ? 
           <Loader /> : 
-          <CardContainer currentChoice={this.state.currentChoice} movie={this.state.movie} favoriteItem={this.favoriteItem} />
+          <CardContainer currentChoice={this.state.currentChoice} movie={this.state.movie} favorites={this.state.favorites} favoriteItem={this.favoriteItem} />
         }
       </div>
     );

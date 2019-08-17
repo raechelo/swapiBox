@@ -17,24 +17,24 @@ class CardContainer extends Component {
   render() {
     switch(this.props.currentChoice) {
       case 'people':
-        return <People /> 
+        return <People favoriteItem={this.props.favoriteItem}  /> 
       case 'planets':
-        return <Planet />
+        return <Planet favoriteItem={this.props.favoriteItem}  />
       case 'vehicles':
-        return <Vehicle />
+        return <Vehicle favoriteItem={this.props.favoriteItem}  />
       case 'species':
-        return <Species />
+        return <Species favoriteItem={this.props.favoriteItem}  />
       case 'starships':
-        return <Starships />
+        return <Starships favoriteItem={this.props.favoriteItem}  />
       case 'films':
-        return <Films />
+        return <Films favoriteItem={this.props.favoriteItem} />
       case 'favorites':
-        if (this.props.rendered.favorites.length === 0) {
+        if (this.props.favorites.length === 0) {
           return (<h3 className="fave">Favorite Some Items!</h3>)
         }
        else {
        return ( <section className="Card-Container">
-              { this.props.rendered.favorites.map(f => {
+              { this.props.favorites.map(f => {
               if (f.climate) {
                 return (
                   <Planet name={f.name} population={f.population} terrain={f.terrain} residents={f.residents} climate={f.climate} />

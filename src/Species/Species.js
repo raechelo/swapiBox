@@ -18,7 +18,7 @@ export default class Species extends Component {
   
   render() {
     const displaySpecies = this.state.species.map(race => (
-      <article>
+      <article className="Card">
         <h4>Name: {race.name}</h4>
         <h6>Classification: {race.classification}</h6>
         <h6>Designation: {race.designation}</h6>
@@ -28,11 +28,12 @@ export default class Species extends Component {
         <h6>Homeworld: </h6>
         <h6>Language: {race.language}</h6>
         <h6>People: {race.people.map(person => (person))}</h6>
+        <h6><i onClick={() => this.props.favoriteItem( race ) } class="far fa-star"></i></h6>
       </article>
     ))
-    
+
     return (
-      <section>
+      <section className="Card-Container">
         {displaySpecies}
       </section>
     )

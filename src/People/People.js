@@ -61,7 +61,7 @@ class People extends Component {
       <h6>Species: {person.species}</h6>
       <h6>Homeworld: {person.homeworld}</h6>
       <h6>Homeworld Population: {person.homeworldPop}</h6>
-      <h6><i onClick={() => person.favoriteItem( person.p ) } class="far fa-star"></i></h6>
+      <h6><i onClick={() => this.props.favoriteItem( person ) } class="far fa-star"></i></h6>
     </article>
     ))
 

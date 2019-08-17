@@ -26,7 +26,7 @@ class Vehicle extends Component {
         <h6>Model: {vehicle.model}</h6>
         <h6>Class: {vehicle.class}</h6>
         <h6>Passenger Count: {vehicle.passengers}</h6>
-        <h6><i onClick={() => vehicle.favoriteItem( vehicle.v ) } class="far fa-star"></i></h6>
+        <h6><i onClick={() => this.props.favoriteItem( vehicle ) } class="far fa-star"></i></h6>
       </article>
     ))
 

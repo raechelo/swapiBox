@@ -47,7 +47,7 @@ class Planet extends Component {
         <h6>Terrain: {planet.terrain}</h6>
         <h6>Climate: {planet.climate}</h6>
         <h6>Residents: {planet.residents.length === 0 ? ('Unknown') : planet.residents.map(r => ' -' + r) }</h6>
-        <h6><i onClick={() => planet.favoriteItem( planet.p ) } class="far fa-star"></i></h6>      
+        <h6><i onClick={() => this.props.favoriteItem( planet ) } class="far fa-star"></i></h6>      
       </article>
     ))
     return (

@@ -20,7 +20,7 @@ export default class Films extends Component {
 
   render() {
     const displayFilms = this.state.films.map(film => (
-      <article>
+      <article className="Card">
         <h4>{film.name}</h4>
         <h6>Episode: {film.episode_id}</h6>
         <h6>Producers: {film.producers}</h6>
@@ -30,11 +30,12 @@ export default class Films extends Component {
         <h6>Starships: </h6>
         <h6>Vehicle: </h6>
         <h6>Species: </h6>
+        <h6><i onClick={() => this.props.favoriteItem( film ) } class="far fa-star"></i></h6>
       </article>
     ));
 
     return (
-      <section>
+      <section className="Card-Container">
         {displayFilms}
       </section>
     )
