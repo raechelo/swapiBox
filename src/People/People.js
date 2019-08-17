@@ -60,7 +60,11 @@ class People extends Component {
       <h4>{person.name}</h4>
       <h6>Species: {person.species}</h6>
       <h6>Homeworld: {person.homeworld}</h6>
-      <h6>Homeworld Population: {person.homeworldPop}</h6>
+      <h6>Homeworld Population: {person.homeworldPopulation}</h6>
+      <h6>Hair Color: {person.hair_color}</h6>
+      <h6>eye Color: {person.eye_color}</h6>
+      <h6>skin Color: {person.skin_color}</h6>
+      <h6>Birth year: {person.birth_year}</h6>
       <h6><i onClick={() => this.props.favoriteItem( person ) } class="far fa-star"></i></h6>
     </article>
     ))
