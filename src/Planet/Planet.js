@@ -1,17 +1,56 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Card from '../Card/Card';
 import propTypes from 'prop-types';
+import { fetchCalls } from '../apiCalls';
 
-const Planet = (props) => {
-  return (
-    <article className="Card">
-      <h4>{props.name}</h4>
-      <h6>Population: {props.population}</h6>
-      <h6>Terrain: {props.terrain}</h6>
-      <h6>Climate: {props.climate}</h6>
-      <h6>Residents: {props.residents.length === 0 ? ('Unknown') : props.residents.map(r => ' -' + r) }</h6>
-      <h6><i onClick={() => props.favoriteItem( props.p ) } class="far fa-star"></i></h6>      
-    </article>
-  )
+class Planet extends Component {
+  constructor() {
+    super()
+    this.state = {
+      planets: []
+    }
+  }
+
+  componentDidMount() {
+      const planetUrl = 'https://swapi.co/api/planets/';
+      return fetchCalls(planetUrl)
+        .then(data => this.setState( { planets: data.results } ) )
+        .then(() => this.fetchResidents(this.state.planets) )
+        .catch(err => { throw new Error(err) } )
+    }
+
+  fetchResidents = (arr) => {
+    let residents = arr.map(p => {
+      return p.residents.reduce((acc, r) => {
+        fetchCalls(r)
+        .then(data => acc.push( data.name ) )
+        .catch(err => { throw new Error(err) } ) 
+        return acc
+      }, [] )
+    })
+    this.addPlanetInfo(residents);
+    return Promise.all(residents);
+  }
+
+  addPlanetInfo = (arr) => {
+    let planets = this.state.planets.map((p, i) => {
+        return Object.assign(p, { residents: arr[i] } )
+    })
+    this.setState( { planets } )
+  }
+  
+
+  render() {
+    const displayPlanets = this.state.planets.map(planet => (
+      <Card name={planet.name} population={planet.population} terrain={planet.terrain} climate={planet.climate} residents={planet.residents} />
+    ))
+
+    return (
+      <section className="Card-Container">
+        {displayPlanets}
+      </section>
+    )
+  }
 }
 
 Planet.propTypes = {

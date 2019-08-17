@@ -1,16 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Card from '../Card/Card';
 import propTypes from 'prop-types';
+import { fetchCalls } from '../apiCalls';
 
-const Vehicle = (props) => {
-  return (
-    <div className="Card">
-      <h4>{props.name}</h4>
-      <h6>Model: {props.model}</h6>
-      <h6>Class: {props.class}</h6>
-      <h6>Passenger Count: {props.passengers}</h6>
-      <h6><i onClick={() => props.favoriteItem( props.v ) } class="far fa-star"></i></h6>
-    </div>
-  )
+
+class Vehicle extends Component {
+  constructor() {
+    super()
+    this.state = {
+      vehicles: []
+    }
+  }
+
+  componentDidMount() {
+    const vehicleUrl = 'https://swapi.co/api/vehicles/';
+    return fetchCalls(vehicleUrl)
+      .then(data => this.setState( {vehicles: data.results} ) )
+      .catch(err => { throw new Error(err) } )
+  }
+  
+
+  render() {
+    const displayVehicles = this.state.vehicles.map(vehicle => (
+      <Card name={vehicle.name} 
+      model={vehicle.model} 
+      vehicle_class={vehicle.vehicle_class} 
+      passengerCount={vehicle.passengers} 
+      crew={vehicle.crew} 
+      cost={vehicle.cost_in_credits} />
+    ))
+
+    return (
+      <section className="Card-Container">
+        {displayVehicles}
+      </section>
+    )
+  }
 }
 
 Vehicle.propTypes = {

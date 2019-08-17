@@ -11,9 +11,6 @@ class App extends Component {
     this.state = {
       isLoading: true,
       movie: {},
-      people: [],
-      planets: [], 
-      vehicles: [],
       favorites: [],
       currentChoice: '',
     }
@@ -24,9 +21,8 @@ class App extends Component {
     return fetchCalls(movieUrl)
       .then(data => data.results.sort(() => 0.5 - Math.random()).pop()  )
       .then(movie => this.setState( { movie } ) )
-      .then(() =>  this.fetchPeople())
-      .then(() => this.fetchVehicles())
-      .then(() => this.fetchPlanets())
+      .then(() => this.setState({ isLoading: false }))
+      .catch(err => { throw new Error(err) })
   }
 
   handleClick = (e) => {
@@ -40,6 +36,15 @@ class App extends Component {
       case 'planets':
         this.setState( { currentChoice: 'planets' } )
       break;
+      case 'films':
+        this.setState( {currentChoice: 'films'} )
+      break;
+      case 'species':
+        this.setState( {currentChoice: 'species'} )
+      break;
+      case 'starships':
+        this.setState( {currentChoice: 'starships'} )
+      break;
       case 'crawl':
         this.setState( { currentChoice: 'crawl' } )
       break;
@@ -48,83 +53,6 @@ class App extends Component {
     }
   }
 
-  fetchPeople = () => {
-    const peopleUrl = 'https://swapi.co/api/people/';
-    return fetchCalls(peopleUrl)
-      .then(data => this.setState( { people: data.results, isLoading: false, currentChoice: 'crawl' } ) )
-      .then(() => this.fetchHomeworlds(this.state.people))
-      .catch(err => { throw new Error(err) } );
-  }
-
-  fetchHomeworlds = (arr) => {
-    let homeworlds = arr.map(p => {
-      return fetchCalls(p.homeworld)
-        .then(data => this.addHomeworldInfo(data.name, data.population) )
-        .catch(err => { throw new Error(err) } )
-    })
-    this.fetchSpecies(this.state.people);
-    return Promise.all(homeworlds)
-  }
-
-  addHomeworldInfo = (name, pop) => {
-    const addInfo = { homeworld:name, homeworldPopulation: pop }
-    const people = this.state.people.map(p => {
-      return Object.assign(p, addInfo)
-    })
-    this.setState( { people } )
-  }
-
-  fetchSpecies = (arr) => {
-    let species = arr.map(p => {
-      return fetchCalls(p.species)
-        .then(data => this.addSpeciesInfo(data.name ) )
-        .catch(err => { throw new Error(err) } )
-    })
-    return Promise.all(species)
-  }
-
-  addSpeciesInfo = (species) => {
-    const addSpecies = {species:species}
-    const people = this.state.people.map(p => {
-      return Object.assign(p, addSpecies)
-    })
-    this.setState( {people } );
-  }
-
-  fetchVehicles = () => {
-    const vehicleUrl = 'https://swapi.co/api/vehicles/';
-    return fetchCalls(vehicleUrl)
-      .then(data => this.setState( {vehicles: data.results} ) )
-      .catch(err => { throw new Error(err) } )
-  }
-
-  addPlanetInfo = (arr) => {
-    let planets = this.state.planets.map((p, i) => {
-        return Object.assign(p, { residents: arr[i] } )
-    })
-    this.setState( { planets } )
-  }
-
-  fetchResidents = (arr) => {
-    let residents = arr.map(p => {
-      return p.residents.reduce((acc, r) => {
-        fetchCalls(r)
-        .then(data => acc.push( data.name ) )
-        .catch(err => { throw new Error(err) } ) 
-        return acc
-      }, [] )
-    })
-    this.addPlanetInfo(residents);
-    return Promise.all(residents);
-  }
-
-  fetchPlanets = () => {
-    const planetUrl = 'https://swapi.co/api/planets/';
-    return fetchCalls(planetUrl)
-      .then(data => this.setState( { planets: data.results } ) )
-      .then(() => this.fetchResidents(this.state.planets) )
-      .catch(err => { throw new Error(err) } )
-  }
 
   favoriteItem = (item) => {
     if (!this.state.favorites.includes(item)) {
@@ -149,14 +77,17 @@ class App extends Component {
         </h1>
         <nav>
           <button className="people" onClick={this.handleClick} >people</button>
+          <button className="species" onClick={this.handleClick} >species</button>
           <button className="planets" onClick={this.handleClick} >planets</button>
           <button className="vehicles" onClick={this.handleClick} >vehicles</button>
+          <button className="starships" onClick={this.handleClick} >starships</button>
+          <button className="films" onClick={this.handleClick} >films</button>
           <button className="favorites" onClick={this.handleClick} >favorites<span className="fave-count">{this.state.favorites.length}</span></button>
         </nav>
         {
           this.state.isLoading === true ? 
           <Loader /> : 
-          <CardContainer rendered={this.state} favoriteItem={this.favoriteItem} />
+          <CardContainer currentChoice={this.state.currentChoice} movie={this.state.movie} favorites={this.state.favorites} favoriteItem={this.favoriteItem} />
         }
       </div>
     );
