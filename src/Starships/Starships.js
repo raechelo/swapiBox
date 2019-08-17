@@ -25,10 +25,10 @@ export default class Starships extends Component {
         <h6>Model: {starship.model}</h6>
         <h6>Manufacturer: {starship.manufacturer}</h6>
         <h6>Class: {starship.starship_class}</h6>
-        <p>Crew count: {starship.crew}</p>
-        <p>Passenger count: {starship.passengers}</p>
-        <p>Hyperdrive rating: {starship.hyperdrive_rating}</p>
-        <p>{starship.MGLT} Megalight per hour</p>
+        <h6>Crew count: {starship.crew}</h6>
+        <h6>Passenger count: {starship.passengers}</h6>
+        <h6>Hyperdrive rating: {starship.hyperdrive_rating}</h6>
+        <h6>{starship.MGLT} Megalight per hour</h6>
         <h6><i onClick={() => this.props.favoriteItem( starship ) } class="far fa-star"></i></h6>
       </article>
     ))

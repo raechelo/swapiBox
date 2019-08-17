@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Card from '../Card/Card';
 import { fetchCalls } from '../apiCalls';
 
 export default class Species extends Component {
@@ -18,18 +19,7 @@ export default class Species extends Component {
   
   render() {
     const displaySpecies = this.state.species.map(race => (
-      <article className="Card">
-        <h4>Name: {race.name}</h4>
-        <h6>Classification: {race.classification}</h6>
-        <h6>Designation: {race.designation}</h6>
-        <h6>Skin Colors: {race.skin_colors}</h6>
-        <h6>Hair Colors: {race.hair_colors}</h6>
-        <h6>Eye Colors: {race.eye_colors}</h6>
-        <h6>Homeworld: </h6>
-        <h6>Language: {race.language}</h6>
-        <h6>People: {race.people.map(person => (person))}</h6>
-        <h6><i onClick={() => this.props.favoriteItem( race ) } class="far fa-star"></i></h6>
-      </article>
+      <Card name={race.name} classification={race.classification} designation={race.designation} skin_colors={race.skin_colors} hair_colors={race.hair_colors} eye_colors={race.eye_colors} homeworld={race.homeworld} language={race.language} people={race.people} />
     ))
 
     return (

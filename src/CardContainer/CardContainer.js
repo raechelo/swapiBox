@@ -47,7 +47,22 @@ class CardContainer extends Component {
                 }
                 else if (f.species) {
                   return(
-                    <People name={f.name} sfecies={f.species} homeworld={f.homeworld} homeworldPop={f.homeworldPopulation} />
+                    <People name={f.name} species={f.species} homeworld={f.homeworld} homeworldPop={f.homeworldPopulation} />
+                  )
+                }
+                else if (f.director) {
+                  return(
+                    <Films name={f.title} />
+                  )
+                }
+                else if (f.MGLT) {
+                  return(
+                    <Starships />
+                  )
+                }
+                else if (f.language) {
+                  return(
+                    <Species  />
                   )
                 }
               } ) 

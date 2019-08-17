@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Card from '../Card/Card';
 import propTypes from 'prop-types';
 import { fetchCalls } from '../apiCalls';
 
@@ -41,15 +42,9 @@ class Planet extends Component {
 
   render() {
     const displayPlanets = this.state.planets.map(planet => (
-      <article className="Card">
-        <h4>{planet.name}</h4>
-        <h6>Population: {planet.population}</h6>
-        <h6>Terrain: {planet.terrain}</h6>
-        <h6>Climate: {planet.climate}</h6>
-        <h6>Residents: {planet.residents.length === 0 ? ('Unknown') : planet.residents.map(r => ' -' + r) }</h6>
-        <h6><i onClick={() => this.props.favoriteItem( planet ) } class="far fa-star"></i></h6>      
-      </article>
+      <Card name={planet.name} population={planet.population} terrain={planet.terrain} climate={planet.climate} residents={planet.residents} />
     ))
+
     return (
       <section className="Card-Container">
         {displayPlanets}
