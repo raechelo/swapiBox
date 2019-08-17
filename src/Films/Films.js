@@ -21,6 +21,7 @@ export default class Films extends Component {
 
   render() {
     const displayFilms = this.state.films.map(film => (
+      <Card />
       <article className="Card">
         <h4>{film.title}</h4>
         <h6>Episode {film.episode_id}</h6>

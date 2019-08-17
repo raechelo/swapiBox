@@ -75,7 +75,7 @@ export default function Card(props) {
           <h6>Language: {props.language}</h6>
         </div>
       }
-      {/* <h6><i onClick={() => props.favoriteItem( props ) } class="far fa-star"></i></h6> */}
+      <h6><i onClick={() => props.favoriteItem( props ) } class="far fa-star"></i></h6>
     </article>
   )
 }
