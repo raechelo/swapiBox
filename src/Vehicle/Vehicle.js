@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loader from '../Loader/Loader';
 import Card from '../Card/Card';
 import propTypes from 'prop-types';
 import { fetchCalls } from '../apiCalls';
@@ -8,6 +9,7 @@ class Vehicle extends Component {
   constructor() {
     super()
     this.state = {
+      isLoading: true,
       vehicles: []
     }
   }
@@ -15,7 +17,7 @@ class Vehicle extends Component {
   componentDidMount() {
     const vehicleUrl = 'https://swapi.co/api/vehicles/';
     return fetchCalls(vehicleUrl)
-      .then(data => this.setState( {vehicles: data.results} ) )
+      .then(data => this.setState( {vehicles: data.results, isLoading: false} ) )
       .catch(err => { throw new Error(err) } )
   }
   
@@ -23,16 +25,21 @@ class Vehicle extends Component {
   render() {
     const displayVehicles = this.state.vehicles.map(vehicle => (
       <Card name={vehicle.name} 
-      model={vehicle.model} 
-      vehicle_class={vehicle.vehicle_class} 
+      model={vehicle.model}
+      manufacturer={vehicle.manufacturer}
+      vehicleClass={vehicle.vehicle_class} 
       passengerCount={vehicle.passengers} 
       crew={vehicle.crew} 
-      cost={vehicle.cost_in_credits} />
+      cost={vehicle.cost_in_credits}
+      favoriteItem={this.props.favoriteItem}  />
     ))
 
     return (
       <section className="Card-Container">
         {displayVehicles}
+       {!this.state.isLoading && <button class="page-btn">Next Page</button>}
+
+        {this.state.isLoading && <Loader />}
       </section>
     )
   }

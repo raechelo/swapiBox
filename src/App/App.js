@@ -82,7 +82,7 @@ class App extends Component {
           <button className="vehicles" onClick={this.handleClick} >vehicles</button>
           <button className="starships" onClick={this.handleClick} >starships</button>
           <button className="films" onClick={this.handleClick} >films</button>
-          <button className="favorites" onClick={this.handleClick} >favorites<span className="fave-count">{this.state.favorites.length}</span></button>
+          {/* <button className="favorites" onClick={this.handleClick} >favorites<span className="fave-count">{this.state.favorites.length}</span></button> */}
         </nav>
         {
           this.state.isLoading === true ? 

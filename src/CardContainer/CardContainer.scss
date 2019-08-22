@@ -1,8 +1,33 @@
 .Card-Container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  height: 90vh;
+  overflow: scroll;
 }
 
 .fave {
   font-size: 3rem;
+}
+
+.page-btn {
+  background-color: hsla(51, 100%, 50%, 0.28);
+  border: 3px solid $accent;
+  color: $accent;
+  font-family: $fancyfont;
+  font-size: 1.5rem;
+  grid-area: btns;;
+  display: block;
+  height: 10%;
+  margin: auto 0;
+  padding: 5px;
+  text-transform: uppercase;
+  width: 60%;
+  z-index: 15;
+
+  &:hover, &:focus {
+    background-color: $accent;
+    color: black;
+    cursor: pointer;
+  }
 }
