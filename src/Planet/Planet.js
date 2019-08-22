@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loader from '../Loader/Loader';
 import Card from '../Card/Card';
 import propTypes from 'prop-types';
 import { fetchCalls } from '../apiCalls';
@@ -7,6 +8,7 @@ class Planet extends Component {
   constructor() {
     super()
     this.state = {
+      isLoading: true,
       planets: []
     }
   }
@@ -34,20 +36,29 @@ class Planet extends Component {
 
   addPlanetInfo = (arr) => {
     let planets = this.state.planets.map((p, i) => {
+      
         return Object.assign(p, { residents: arr[i] } )
     })
-    this.setState( { planets } )
+    this.setState( { planets, isLoading: false } )
   }
   
 
   render() {
     const displayPlanets = this.state.planets.map(planet => (
-      <Card name={planet.name} population={planet.population} terrain={planet.terrain} climate={planet.climate} residents={planet.residents} />
+      <Card name={planet.name} 
+      population={planet.population} 
+      terrain={planet.terrain} 
+      climate={planet.climate}
+      residents={planet.residents}
+      orbitalPeriod={planet.orbital_period}
+      surfaceWater={planet.surface_water}
+      favoriteItem={this.props.favoriteItem}  />
     ))
 
     return (
       <section className="Card-Container">
         {displayPlanets}
+        {this.state.isLoading && <Loader />}
       </section>
     )
   }

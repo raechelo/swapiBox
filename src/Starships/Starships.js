@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Card from '../Card/Card';
+import Loader from '../Loader/Loader';
 import { fetchCalls } from '../apiCalls';
 
 
@@ -7,6 +8,7 @@ export default class Starships extends Component {
   constructor() {
     super()
     this.state = {
+      isLoading: true,
       starships: []
     }
   }
@@ -14,7 +16,7 @@ export default class Starships extends Component {
   componentDidMount() {
     const starshipsUrl = 'https://swapi.co/api/starships';
     return fetchCalls(starshipsUrl)
-      .then(data => this.setState( { starships: data.results } ) )
+      .then(data => this.setState( { starships: data.results, isLoading: false } ) )
       .catch(err => {throw new Error(err) } )
   }
   
@@ -24,15 +26,18 @@ export default class Starships extends Component {
       <Card name={starship.name} 
       model={starship.model} 
       manufacturer={starship.manufacturer} 
-      starship_class={starship.starship_class} 
+      starshipClass={starship.starship_class} 
       passengerCount={starship.passengers} 
-      hyperdrive_rating={starship.hyperdrive_rating}
-      MGLT={starship.MGLT}  />
+      hyperdriveRating={starship.hyperdrive_rating}
+      MGLT={starship.MGLT} 
+      cost={starship.cost_in_credits}
+      favoriteItem={this.props.favoriteItem}  />
     ))
 
     return (
       <section className="Card-Container">
         {displayStarships}
+        {this.state.isLoading && <Loader />}
       </section>
     )
   }

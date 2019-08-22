@@ -9,18 +9,17 @@ export default function Card(props) {
           <h4>{props.name}</h4>
           <h6>Species: {props.species}</h6>
           <h6>Homeworld: {props.homeworld}</h6>
-          <h6>Hair Color: {props.hair_color}</h6>
-          <h6>eye Color: {props.eye_color}</h6>
-          <h6>skin Color: {props.skin_color}</h6>
-          <h6>Birth year: {props.birth_year}</h6>
+          <h6>Hair Color: {props.hairColor}</h6>
+          <h6>eye Color: {props.eyeColor}</h6>
+          <h6>skin Color: {props.skinColor}</h6>
+          <h6>Birth year: {props.birthYear}</h6>
         </div>
       }
       {
-        props.vehicle_class &&
+        props.vehicleClass &&
         <div>
           <h4>{props.name}</h4>
           <h6>Model: {props.model}</h6>
-          <h6>Class: {props.vehicle_class}</h6>
           <h6>Manufacturer: {props.manufacturer}</h6>
           <h6>Class: {props.vehicle_class}</h6>
           <h6>Cost: {props.cost}</h6>
@@ -39,13 +38,13 @@ export default function Card(props) {
         </div>
       }
       {
-        props.starship_class &&
+        props.starshipClass &&
         <div>
-          <h4>Name: {props.name}</h4>
+          <h4>{props.name}</h4>
           <h6>Model: {props.model}</h6>
           <h6>Manufacturer: {props.manufacturer}</h6>
-          <h6>Class: {props.starship_class}</h6>
-          <h6>Hyperdrive rating: {props.hyperdrive_rating}</h6>
+          <h6>Class: {props.starshipClass}</h6>
+          <h6>Hyperdrive rating: {props.hyperdriveRating}</h6>
           <h6>{props.MGLT} Megalight per hour</h6>
           <h6>Cost: {props.cost}</h6>
           <h6>Crew count: {props.crew}</h6>
@@ -59,7 +58,8 @@ export default function Card(props) {
           <h6>Population: {props.population}</h6>
           <h6>Terrain: {props.terrain}</h6>
           <h6>Climate: {props.climate}</h6>
-          <h6>Residents: {props.residents}</h6>
+          <h6>Orbital Period (in Days): {props.orbitalPeriod}</h6>
+          <h6>Surface Water: {props.surfaceWater}%</h6>
         </div>
       }
       {
@@ -68,9 +68,9 @@ export default function Card(props) {
           <h4>{props.name}</h4>
           <h6>Classification: {props.classification}</h6>
           <h6>Designation: {props.designation}</h6>
-          <h6>Skin Colors: {props.skin_colors}</h6>
-          <h6>Hair Colors: {props.hair_colors}</h6>
-          <h6>Eye Colors: {props.eye_colors}</h6>
+          <h6>Skin Colors: {props.skinColors}</h6>
+          <h6>Hair Colors: {props.hairColors}</h6>
+          <h6>Eye Colors: {props.eyeColors}</h6>
           <h6>Homeworld: </h6>
           <h6>Language: {props.language}</h6>
         </div>
