@@ -21,7 +21,7 @@ export default function Card(props) {
           <h4>{props.name}</h4>
           <h6>Model: {props.model}</h6>
           <h6>Manufacturer: {props.manufacturer}</h6>
-          <h6>Class: {props.vehicle_class}</h6>
+          <h6>Class: {props.vehicleClass}</h6>
           <h6>Cost: {props.cost}</h6>
           <h6>Crew Count: {props.crew}</h6>
           <h6>Passenger Count: {props.passengerCount}</h6>
@@ -75,7 +75,12 @@ export default function Card(props) {
           <h6>Language: {props.language}</h6>
         </div>
       }
-      <h6><i onClick={() => props.favoriteItem( props ) } class="far fa-star"></i></h6>
+      {/* {
+        props.favorite && <h6><i onClick={() => props.favoriteItem(props) } class="fas fa-star"></i></h6>
+      }
+      {
+        !props.favorite && <h6><i onClick={() => props.favoriteItem(props) } class="far fa-star"></i></h6>
+      } */}
     </article>
   )
 }

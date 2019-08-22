@@ -35,6 +35,8 @@ export default class Films extends Component {
     return (
       <section className="Card-Container">
         {displayFilms}
+       {!this.state.isLoading && <button class="page-btn">Next Page</button>}
+
         {this.state.isLoading && <Loader />}
       </section>
     )

@@ -37,6 +37,8 @@ export default class Starships extends Component {
     return (
       <section className="Card-Container">
         {displayStarships}
+       {!this.state.isLoading && <button class="page-btn">Next Page</button>}
+
         {this.state.isLoading && <Loader />}
       </section>
     )

@@ -58,6 +58,7 @@ class Planet extends Component {
     return (
       <section className="Card-Container">
         {displayPlanets}
+       {!this.state.isLoading && <button class="page-btn">Next Page</button>}
         {this.state.isLoading && <Loader />}
       </section>
     )

@@ -29,48 +29,48 @@ class CardContainer extends Component {
         return <Starships favoriteItem={this.props.favoriteItem}  />
       case 'films':
         return <Films favoriteItem={this.props.favoriteItem} />
-      case 'favorites':
-        if (this.props.favorites.length === 0) {
-          return (<h3 className="fave">Favorite Some Items!</h3>)
-        }
-       else {
-       return ( <section className="Card-Container">
-              { this.props.favorites.map(fave => (
-                <Card 
-                name={fave.name} 
-                title={fave.title}
-                species={fave.species}
-                homeworld={fave.homeworld}
-                population={fave.population}
-                terrain={fave.terrain}
-                climate={fave.climate}
-                residents={fave.residents}
-                vehicle_class={fave.vehicle_class}
-                starship_class={fave.starship_class}
-                model={fave.model}
-                manufacturer={fave.manufacturer}
-                hyperdrive_rating={fave.hyperdrive_rating}
-                MGLT={fave.MGLT}
-                cost={fave.cost}
-                crew={fave.crew}
-                passengerCount={fave.passengerCount}
-                classification={fave.classification}
-                designation={fave.designation}
-                skin_colors={fave.skin_colors} 
-                hair_colors={fave.hair_colors} 
-                eye_colors={fave.eye_colors} 
-                homeworld={fave.homeworld} 
-                language={fave.language} 
-                people={fave.people}
-                episode_id={fave.episode_id}
-                director={fave.director}
-                producer={fave.producer}
-                release_date={fave.release_date} />
-                ))
-              }
-          </section>
-        )
-       }
+      // case 'favorites':
+      //   if (this.props.favorites.length === 0) {
+      //     return (<h3 className="fave">Favorite Some Items!</h3>)
+      //   }
+      //  else {
+      //  return ( <section className="Card-Container">
+      //         { this.props.favorites.map(fave => (
+      //           <Card 
+      //           name={fave.name} 
+      //           title={fave.title}
+      //           species={fave.species}
+      //           homeworld={fave.homeworld}
+      //           population={fave.population}
+      //           terrain={fave.terrain}
+      //           climate={fave.climate}
+      //           residents={fave.residents}
+      //           vehicleClass={fave.vehicle_class}
+      //           starshipClass={fave.starship_class}
+      //           model={fave.model}
+      //           manufacturer={fave.manufacturer}
+      //           hyperdriveRating={fave.hyperdrive_rating}
+      //           MGLT={fave.MGLT}
+      //           cost={fave.cost}
+      //           crew={fave.crew}
+      //           passengerCount={fave.passengerCount}
+      //           classification={fave.classification}
+      //           designation={fave.designation}
+      //           skinColors={fave.skinColors} 
+      //           haicrColors={fave.hairColors} 
+      //           eyeColors={fave.eyeColors} 
+      //           homeworld={fave.homeworld} 
+      //           language={fave.language} 
+      //           people={fave.people}
+      //           episode_id={fave.episode_id}
+      //           director={fave.director}
+      //           producer={fave.producer}
+      //           release_date={fave.release_date} />
+      //           ))
+      //         }
+      //     </section>
+      //   )
+      //  }
       default:
         return (<Crawl 
           subTitle={this.props.movie.title}

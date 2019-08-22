@@ -25,7 +25,8 @@ class Vehicle extends Component {
   render() {
     const displayVehicles = this.state.vehicles.map(vehicle => (
       <Card name={vehicle.name} 
-      model={vehicle.model} 
+      model={vehicle.model}
+      manufacturer={vehicle.manufacturer}
       vehicleClass={vehicle.vehicle_class} 
       passengerCount={vehicle.passengers} 
       crew={vehicle.crew} 
@@ -36,6 +37,8 @@ class Vehicle extends Component {
     return (
       <section className="Card-Container">
         {displayVehicles}
+       {!this.state.isLoading && <button class="page-btn">Next Page</button>}
+
         {this.state.isLoading && <Loader />}
       </section>
     )
