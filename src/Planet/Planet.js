@@ -14,7 +14,7 @@ class Planet extends Component {
   }
 
   componentDidMount() {
-      const planetUrl = 'https://swapi.co/api/planets/';
+      const planetUrl = 'https://swapi.dev/api/planets/';
       return fetchCalls(planetUrl)
         .then(data => this.setState( { planets: data.results } ) )
         .then(() => this.fetchResidents(this.state.planets) )
@@ -58,7 +58,7 @@ class Planet extends Component {
     return (
       <section className="Card-Container">
         {displayPlanets}
-       {!this.state.isLoading && <button class="page-btn">Next Page</button>}
+       {/* {!this.state.isLoading && <button class="page-btn">Next Page</button>} */}
         {this.state.isLoading && <Loader />}
       </section>
     )

@@ -17,7 +17,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const movieUrl = 'https://swapi.co/api/films/';
+    const movieUrl = 'https://swapi.dev/api/films/';
     return fetchCalls(movieUrl)
       .then(data => data.results.sort(() => 0.5 - Math.random()).pop()  )
       .then(movie => this.setState( { movie } ) )

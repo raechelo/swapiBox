@@ -13,7 +13,7 @@ export default class Species extends Component {
   }
 
   componentDidMount() {
-    const speciesUrl = 'https://swapi.co/api/species';
+    const speciesUrl = 'https://swapi.dev/api/species';
     return fetchCalls(speciesUrl)
       .then(data => this.setState( {species: data.results, isLoading: false} ) )
       .catch(err => { throw new Error(err) } )
@@ -36,7 +36,7 @@ export default class Species extends Component {
     return (
       <section className="Card-Container">
         {displaySpecies}
-       {!this.state.isLoading && <button class="page-btn">Next Page</button>}
+       {/* {!this.state.isLoading && <button class="page-btn">Next Page</button>} */}
 
         {this.state.isLoading && <Loader />}
       </section>
