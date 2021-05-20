@@ -14,7 +14,7 @@ export default class Films extends Component {
   }
 
   componentDidMount() {
-    const filmsUrl = 'https://swapi.co/api/films';
+    const filmsUrl = 'https://swapi.dev/api/films';
     return fetchCalls(filmsUrl)
       .then(data => data.results.sort((a, b) => a.episode_id - b.episode_id))
       .then(data => this.setState( {films: data, isLoading: false} ) )
@@ -35,7 +35,7 @@ export default class Films extends Component {
     return (
       <section className="Card-Container">
         {displayFilms}
-       {!this.state.isLoading && <button class="page-btn">Next Page</button>}
+       {/* {!this.state.isLoading && <button class="page-btn">Next Page</button>} */}
 
         {this.state.isLoading && <Loader />}
       </section>

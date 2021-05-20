@@ -7,7 +7,7 @@ export default function Card(props) {
         props.species && 
         <div>
           <h4>{props.name}</h4>
-          <h6>Species: {props.species}</h6>
+          {/* <h6>Species: {props.species}</h6> */}
           <h6>Homeworld: {props.homeworld}</h6>
           <h6>Hair Color: {props.hairColor}</h6>
           <h6>eye Color: {props.eyeColor}</h6>

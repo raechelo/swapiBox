@@ -14,7 +14,7 @@ export default class Starships extends Component {
   }
 
   componentDidMount() {
-    const starshipsUrl = 'https://swapi.co/api/starships';
+    const starshipsUrl = 'https://swapi.dev/api/starships';
     return fetchCalls(starshipsUrl)
       .then(data => this.setState( { starships: data.results, isLoading: false } ) )
       .catch(err => {throw new Error(err) } )
@@ -37,7 +37,7 @@ export default class Starships extends Component {
     return (
       <section className="Card-Container">
         {displayStarships}
-       {!this.state.isLoading && <button class="page-btn">Next Page</button>}
+       {/* {!this.state.isLoading && <button class="page-btn">Next Page</button>} */}
 
         {this.state.isLoading && <Loader />}
       </section>

@@ -15,7 +15,7 @@ class People extends Component {
   }
 
   componentDidMount() {
-    const peopleUrl = 'https://swapi.co/api/people/';
+    const peopleUrl = 'https://swapi.dev/api/people/';
     return fetchCalls(peopleUrl)
       .then(data => this.setState( { people: data.results, currentChoice: 'crawl' } ) )
       .then(() => this.fetchHomeworlds(this.state.people))
@@ -28,7 +28,7 @@ class People extends Component {
         .then(data => this.addHomeworldInfo(data.name, data.population) )
         .catch(err => { throw new Error(err) } )
     })
-    this.fetchSpecies(this.state.people);
+    // this.fetchSpecies(this.state.people);
     return Promise.all(homeworlds)
   }
 
@@ -37,7 +37,7 @@ class People extends Component {
     const people = this.state.people.map(p => {
       return Object.assign(p, addInfo)
     })
-    this.setState( { people } )
+    this.setState( { people, isLoading: false } )
   }
 
   fetchSpecies = (people) => {
@@ -73,7 +73,7 @@ class People extends Component {
     return (
      <section className="Card-Container">
        {displayPeople}
-       {!this.state.isLoading && <button class="page-btn">Next Page</button>}
+       {/* {!this.state.isLoading && <button class="page-btn">Next Page</button>} */}
 
        { this.state.isLoading && 
         <Loader /> }

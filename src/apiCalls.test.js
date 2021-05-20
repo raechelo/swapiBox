@@ -7,7 +7,7 @@ describe('fetchCalls', () => {
 
   beforeEach(() => {
     mockMovie = {name:'Episode 4'};
-    mockUrl = ['https://swapi.co/api/films/', {
+    mockUrl = ['https://swapi.dev/api/films/', {
       method: 'GET'
     }]
 
@@ -20,7 +20,7 @@ describe('fetchCalls', () => {
   });
 
   it.skip('should be called with the correct params', () => {
-    const expected = ['https://swapi.co/api/films/', {
+    const expected = ['https://swapi.dev/api/films/', {
       method: 'GET',
       body: JSON.stringify( { mockMovie } )
     }

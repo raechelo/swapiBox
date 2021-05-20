@@ -15,7 +15,7 @@ class Vehicle extends Component {
   }
 
   componentDidMount() {
-    const vehicleUrl = 'https://swapi.co/api/vehicles/';
+    const vehicleUrl = 'https://swapi.dev/api/vehicles/';
     return fetchCalls(vehicleUrl)
       .then(data => this.setState( {vehicles: data.results, isLoading: false} ) )
       .catch(err => { throw new Error(err) } )
@@ -37,7 +37,7 @@ class Vehicle extends Component {
     return (
       <section className="Card-Container">
         {displayVehicles}
-       {!this.state.isLoading && <button class="page-btn">Next Page</button>}
+       {/* {!this.state.isLoading && <button class="page-btn">Next Page</button>} */}
 
         {this.state.isLoading && <Loader />}
       </section>
