@@ -3,6 +3,7 @@ import Loader from '../Loader/Loader';
 import Card from '../Card/Card';
 import propTypes from 'prop-types';
 import { fetchCalls } from '../apiCalls';
+import {vehicleUrl} from '../assets/api-links';
 
 
 class Vehicle extends Component {
@@ -15,10 +16,8 @@ class Vehicle extends Component {
   }
 
   componentDidMount() {
-    const vehicleUrl = 'https://swapi.co/api/vehicles/';
     return fetchCalls(vehicleUrl)
-      .then(data => this.setState( {vehicles: data.results, isLoading: false} ) )
-      .catch(err => { throw new Error(err) } )
+      .then(data => this.setState( {vehicles: data.results, isLoading: false} ) );
   }
   
 
@@ -31,13 +30,14 @@ class Vehicle extends Component {
       passengerCount={vehicle.passengers} 
       crew={vehicle.crew} 
       cost={vehicle.cost_in_credits}
-      favoriteItem={this.props.favoriteItem}  />
+      favoriteItem={this.props.favoriteItem}
+      key={vehicle.name} />
     ))
 
     return (
       <section className="Card-Container">
         {displayVehicles}
-       {!this.state.isLoading && <button class="page-btn">Next Page</button>}
+       {/* {!this.state.isLoading && <button className="page-btn">Next Page</button>} */}
 
         {this.state.isLoading && <Loader />}
       </section>

@@ -3,6 +3,7 @@ import Loader from '../Loader/Loader';
 import Card from '../Card/Card';
 import propTypes from 'prop-types';
 import { fetchCalls } from '../apiCalls';
+import { planetUrl } from '../assets/api-links';
 
 class Planet extends Component {
   constructor() {
@@ -14,11 +15,9 @@ class Planet extends Component {
   }
 
   componentDidMount() {
-      const planetUrl = 'https://swapi.co/api/planets/';
       return fetchCalls(planetUrl)
         .then(data => this.setState( { planets: data.results } ) )
-        .then(() => this.fetchResidents(this.state.planets) )
-        .catch(err => { throw new Error(err) } )
+        .then(() => this.fetchResidents(this.state.planets) );
     }
 
   fetchResidents = (arr) => {
@@ -52,13 +51,14 @@ class Planet extends Component {
       residents={planet.residents}
       orbitalPeriod={planet.orbital_period}
       surfaceWater={planet.surface_water}
-      favoriteItem={this.props.favoriteItem}  />
+      favoriteItem={this.props.favoriteItem}
+      key={planet.name} />
     ))
 
     return (
       <section className="Card-Container">
         {displayPlanets}
-       {!this.state.isLoading && <button class="page-btn">Next Page</button>}
+       {/* {!this.state.isLoading && <button className="page-btn">Next Page</button>} */}
         {this.state.isLoading && <Loader />}
       </section>
     )

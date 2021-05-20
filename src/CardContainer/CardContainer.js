@@ -7,13 +7,11 @@ import Planet from '../Planet/Planet';
 import Species from '../Species/Species';
 import Starships from '../Starships/Starships';
 import Card from '../Card/Card';
+// import NoMatch from '../NoMatch/NoMatch';
 import Films from '../Films/Films';
 import propTypes from 'prop-types';
 
 class CardContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     switch(this.props.currentChoice) {
@@ -29,48 +27,47 @@ class CardContainer extends Component {
         return <Starships favoriteItem={this.props.favoriteItem}  />
       case 'films':
         return <Films favoriteItem={this.props.favoriteItem} />
-      // case 'favorites':
-      //   if (this.props.favorites.length === 0) {
-      //     return (<h3 className="fave">Favorite Some Items!</h3>)
-      //   }
-      //  else {
-      //  return ( <section className="Card-Container">
-      //         { this.props.favorites.map(fave => (
-      //           <Card 
-      //           name={fave.name} 
-      //           title={fave.title}
-      //           species={fave.species}
-      //           homeworld={fave.homeworld}
-      //           population={fave.population}
-      //           terrain={fave.terrain}
-      //           climate={fave.climate}
-      //           residents={fave.residents}
-      //           vehicleClass={fave.vehicle_class}
-      //           starshipClass={fave.starship_class}
-      //           model={fave.model}
-      //           manufacturer={fave.manufacturer}
-      //           hyperdriveRating={fave.hyperdrive_rating}
-      //           MGLT={fave.MGLT}
-      //           cost={fave.cost}
-      //           crew={fave.crew}
-      //           passengerCount={fave.passengerCount}
-      //           classification={fave.classification}
-      //           designation={fave.designation}
-      //           skinColors={fave.skinColors} 
-      //           haicrColors={fave.hairColors} 
-      //           eyeColors={fave.eyeColors} 
-      //           homeworld={fave.homeworld} 
-      //           language={fave.language} 
-      //           people={fave.people}
-      //           episode_id={fave.episode_id}
-      //           director={fave.director}
-      //           producer={fave.producer}
-      //           release_date={fave.release_date} />
-      //           ))
-      //         }
-      //     </section>
-      //   )
-      //  }
+      case 'favorites':
+        if (this.props.favorites.length === 0) {
+          return (<h3 className="fave">Favorite Some Items!</h3>)
+        }
+       else {
+       return ( <section className="Card-Container">
+              { this.props.favorites.map(fave => (
+                <Card 
+                name={fave.name} 
+                title={fave.title}
+                species={fave.species}
+                homeworld={fave.homeworld}
+                population={fave.population}
+                terrain={fave.terrain}
+                climate={fave.climate}
+                residents={fave.residents}
+                vehicleClass={fave.vehicle_class}
+                starshipClass={fave.starship_class}
+                model={fave.model}
+                manufacturer={fave.manufacturer}
+                hyperdriveRating={fave.hyperdrive_rating}
+                MGLT={fave.MGLT}
+                cost={fave.cost}
+                crew={fave.crew}
+                passengerCount={fave.passengerCount}
+                classification={fave.classification}
+                designation={fave.designation}
+                skinColors={fave.skinColors} 
+                haicrColors={fave.hairColors} 
+                eyeColors={fave.eyeColors} 
+                language={fave.language} 
+                people={fave.people}
+                episode_id={fave.episode_id}
+                director={fave.director}
+                producer={fave.producer}
+                release_date={fave.release_date} />
+                ))
+              }
+          </section>
+        )
+       }
       default:
         return (<Crawl 
           subTitle={this.props.movie.title}

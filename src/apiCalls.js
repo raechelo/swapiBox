@@ -1,15 +1,15 @@
 const fetchCalls = url => {
-  return fetch (url, {
-      method: 'GET'
-
-  })
+  return fetch(url)
   .then(response => {
     if (!response.ok) {
-      throw Error('Error fetching data')
+      throw Error('Error fetching data');
     } else {
-      return response.json()
+      return response.json();
     }
   })
+  .catch(err => {
+    throw new Error(err);
+  });
 }
 
 export { fetchCalls }

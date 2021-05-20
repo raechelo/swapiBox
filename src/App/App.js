@@ -4,6 +4,7 @@ import CardContainer from '../CardContainer/CardContainer';
 import Starfield from '../Starfield/Starfield'
 import propTypes from 'prop-types';
 import { fetchCalls } from '../apiCalls';
+import { filmsUrl } from '../assets/api-links';
 
 class App extends Component {
   constructor() {
@@ -17,9 +18,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const movieUrl = 'https://swapi.co/api/films/';
-    return fetchCalls(movieUrl)
-      .then(data => data.results.sort(() => 0.5 - Math.random()).pop()  )
+    return fetchCalls(filmsUrl)
+      .then(data => data.results.sort(() => 0.5 - Math.random()).pop())
       .then(movie => this.setState( { movie } ) )
       .then(() => this.setState({ isLoading: false }))
       .catch(err => { throw new Error(err) })
@@ -77,7 +77,7 @@ class App extends Component {
         </h1>
         <nav>
           <button className="people" onClick={this.handleClick} >people</button>
-          <button className="species" onClick={this.handleClick} >species</button>
+          {/* <button className="species" onClick={this.handleClick} >species</button> */}
           <button className="planets" onClick={this.handleClick} >planets</button>
           <button className="vehicles" onClick={this.handleClick} >vehicles</button>
           <button className="starships" onClick={this.handleClick} >starships</button>

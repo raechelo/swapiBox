@@ -31,3 +31,33 @@
     cursor: pointer;
   }
 }
+
+.NoMatch {
+  z-index: 15;
+}
+
+.link, .link:visited {
+  text-decoration: none;
+}
+
+.back-btn {
+  background-color: hsla(51, 100%, 50%, 0.28);
+  border: 3px solid $accent;
+  color: $accent;
+  font-family: $fancyfont;
+  font-size: 1.5rem;
+  grid-area: btns;;
+  display: block;
+  height: 10%;
+  margin: auto;
+  padding: 5px;
+  text-transform: uppercase;
+  width: 60%;
+
+  &:hover, &:focus {
+    background-color: $accent;
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+  }
+}

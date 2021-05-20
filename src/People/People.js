@@ -3,6 +3,7 @@ import Card from '../Card/Card';
 import Loader from '../Loader/Loader';
 import propTypes from 'prop-types';
 import { fetchCalls } from '../apiCalls';
+import {peopleUrl} from '../assets/api-links';
 
 
 class People extends Component {
@@ -15,68 +16,61 @@ class People extends Component {
   }
 
   componentDidMount() {
-    const peopleUrl = 'https://swapi.co/api/people/';
     return fetchCalls(peopleUrl)
-      .then(data => this.setState( { people: data.results, currentChoice: 'crawl' } ) )
-      .then(() => this.fetchHomeworlds(this.state.people))
-      .catch(err => { throw new Error(err) } );
+      .then(people => this.setState({people: people.results}))
+      .then(() => this.fetchHomeworlds());
   }
   
-  fetchHomeworlds = (arr) => {
-    let homeworlds = arr.map(async p => {
-      return fetchCalls(p.homeworld)
-        .then(data => this.addHomeworldInfo(data.name, data.population) )
-        .catch(err => { throw new Error(err) } )
-    })
-    this.fetchSpecies(this.state.people);
-    return Promise.all(homeworlds)
+  
+  fetchHomeworlds = () => {
+    this.state.people.map(person => {
+      fetchCalls(person.homeworld)
+        .then(data =>  this.addHomeworldInfo(data.name, person))
+        .then(() => this.setState({ isLoading: false}))
+    });
   }
 
-  addHomeworldInfo = (name, pop) => {
-    const addInfo = { homeworld:name, homeworldPopulation: pop }
-    const people = this.state.people.map(p => {
-      return Object.assign(p, addInfo)
-    })
-    this.setState( { people } )
+  addHomeworldInfo = (homeworld, person) => {
+    const updatedPerson = { ...person, homeworld };
+    const filteredPeople = this.state.people.filter(person => person.name !== updatedPerson.name);
+    const people = [...filteredPeople, updatedPerson];
+    this.setState({ people });
   }
 
-  fetchSpecies = (people) => {
-    let species = people.map(person => {
-      return fetchCalls(person.species)
-        .then(data => this.addSpeciesInfo(data.name ) )
-        .catch(err => { throw new Error(err) } )
+  fetchSpecies = () => {
+    this.state.people.map(person => {
+      if (person.species.length) {
+        return fetchCalls(person.species)
+          .then(species => this.addSpeciesInfo(species.name, person) );
+      }
     })
-    return Promise.all(species)
   }
 
-  addSpeciesInfo = (species) => {
-    console.log(species)
-    const addSpecies = {species:species}
-    const people = this.state.people.map(person => {
-      return Object.assign(person, species)
-    })
+  addSpeciesInfo = (species, person) => {
+    const updatedPerson = {...person, species};
+    const filteredPeople = this.state.people.filter(person => person.name !== updatedPerson.name);
+    const people = [...filteredPeople, updatedPerson];
     this.setState( { people, isLoading: false } );
   }
 
   render() {
     const displayPeople = this.state.people.map(person => (
-      <Card name={person.name} species={person.species} 
+      <Card name={person.name}
+      species={person.species} 
       homeworld={person.homeworld} 
-      homeworldPopulation={person.homeworldPopulation} 
       hairColor={person.hair_color} 
       eyeColor={person.eye_color} 
       skinColor={person.skin_color} 
       birthYear={person.birth_year}
-      favoriteItem={this.props.favoriteItem}  />
+      favoriteItem={this.props.favoriteItem}
+      key={person.name} />
     ))
 
     return (
      <section className="Card-Container">
-       {displayPeople}
-       {!this.state.isLoading && <button class="page-btn">Next Page</button>}
-
-       { this.state.isLoading && 
-        <Loader /> }
+       {!this.state.isLoading && displayPeople}
+       {/* {!this.state.isLoading && <button className="page-btn">Next Page</button>} */}
+       { this.state.isLoading && <Loader /> }
      </section>
     )
   }
